@@ -56,6 +56,8 @@ Batting%>%
 
 ```
 
+###Ordering Results
+
 Find all instances of a player having more than 50 home runs.
 Use the following to show the number of home runs in descending order:
 
@@ -78,8 +80,53 @@ Batting%>%
 
 ```
 
+###Aggregation
 
+Find total home runs by Babe Ruth
 
+```{r warning = FALSE}
+Batting%>%
+  filter(playerID=='ruthba01')%>%
+  group_by(playerID)%>%
+  summarize(career_HR=sum(HR))
+
+```
+
+Find career home run totals for all players, but limit the list to those who have a career total of 600 or more
+Put the highest totals at the top
+
+```{r warning=FALSE}
+Batting%>%
+  group_by(playerID)%>%
+  summarize(career_HR=sum(HR))%>%
+  filter(career_HR>=600)%>%
+  arrange(desc(career_HR))
+
+```
+
+What players have the highest average per season home run totals?
+
+```{r warning=FALSE}
+Batting%>%
+  group_by(playerID)%>%
+  summarize(avg_HR=mean(HR))%>%
+  filter(avg_HR>=30)%>%
+  arrange(desc(avg_HR))
+
+```
+
+What players, since 1970, have hit more than 50 home runs, at least once?
+
+```{r warning=FALSE}
+Batting%>%
+  filter(yearID>=1970)%>%
+  group_by(playerID)%>%
+  summarize(max_HR=max(HR))%>%
+  filter(max_HR>50)%>%
+  arrange(desc(max_HR))%>%
+  select(playerID)
+
+```
 
 
 
