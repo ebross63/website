@@ -3,7 +3,11 @@ title: "dplyr"
 output: html_document
 ---
 
-### Filtering Columns and Rows
+### Introduction
+
+The R package dplyr is a grammar of data manipulation. It provides users a fast and consistent way to solve data manipulation challenges. dplyr is an essential tool when using R for data science projects. 
+
+### Getting Started: Filtering Columns and Rows
 
 When using dplyr, you can filter columns and rows by using select and filter. Let's look examples using the Lahman baseball database. We first have to load the "Lahman" and "dplyr" packages. 
 
@@ -38,7 +42,7 @@ Batting%>%
 
 ```
 
-Use the code below to find all instances of players (from any team) having more than 40 homeruns and less than 60 strikeouts: 
+Example: Find all instances of players (from any team) having more than 40 homeruns and less than 60 strikeouts. 
 
 ```{r warning=FALSE}
 Batting%>%
@@ -47,7 +51,7 @@ Batting%>%
 
 ```
 
-Use multiple filters to find all instances of Philadelphia players from the 1970's that had greater than 30 homeruns:
+Example: Find all instances of Philadelphia players from the 1970's that had greater than 30 homeruns.
 
 ```{r warning=FALSE}
 Batting%>%
@@ -58,8 +62,9 @@ Batting%>%
 
 ###Ordering Results
 
-Find all instances of a player having more than 50 home runs.
-Use the following to show the number of home runs in descending order:
+Now that you know how to retrieve the columns and rows you want, ordering appropriately will make the results easier to view. Use arrange() to order your results, the default setting shows results in ascending order.
+
+Example: Find all instances of a player having more than 50 home runs. Show the number of home runs in descending order:
 
 ```{r warning=FALSE}
 Batting%>%
@@ -69,8 +74,7 @@ Batting%>%
 
 ```
 
-Find all instances of a player striking out less than 10 times. Only include players with at least 400 at bats. 
-Show the list in ascending order of strikeouts:
+Example: Find all instances of a player striking out less than 10 times. Only include players with at least 400 at bats. Show the list in ascending order of strikeouts:
 
 ```{r warning=FALSE}
 Batting%>%
@@ -82,7 +86,9 @@ Batting%>%
 
 ###Aggregation
 
-Find total home runs by Babe Ruth
+Aggretation in dplyr is performed using summarize() on data that has been grouped with group_by(). Commonly used functions includes sum(), mean(), min(), and max().
+
+Example: Find total home runs by Babe Ruth.
 
 ```{r warning = FALSE}
 Batting%>%
@@ -92,8 +98,7 @@ Batting%>%
 
 ```
 
-Find career home run totals for all players, but limit the list to those who have a career total of 600 or more
-Put the highest totals at the top
+Example: Find career home run totals for all players, but limit the list to those who have a career total of 600 or more. Put the highest totals at the top.
 
 ```{r warning=FALSE}
 Batting%>%
@@ -104,7 +109,7 @@ Batting%>%
 
 ```
 
-What players have the highest average per season home run totals?
+Example: Show the players having the highest average per season home run totals.
 
 ```{r warning=FALSE}
 Batting%>%
@@ -115,7 +120,7 @@ Batting%>%
 
 ```
 
-What players, since 1970, have hit more than 50 home runs, at least once?
+Example:  Show all players since 1970, that have hit more than 50 home runs, at least once.
 
 ```{r warning=FALSE}
 Batting%>%
